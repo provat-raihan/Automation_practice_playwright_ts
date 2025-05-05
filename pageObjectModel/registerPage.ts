@@ -2,6 +2,10 @@ import { Page } from "playwright";
 
 export class RegisterPage {
   readonly signupHeadertext: string;
+  readonly loginHeadertext: string;
+  readonly loginEmailtext: string;
+  readonly loginPasswordtext: string;
+  readonly loginButton: string;
   readonly nameInputText: string;
   readonly emailInputText: string;
   readonly signupButton: string;
@@ -44,11 +48,14 @@ export class RegisterPage {
   readonly deleteAccMessage: string;
   readonly deleteAccContinueButton: string;
 
+  readonly incorrectEmailText: string;
+
 
 
 
   constructor(page: Page) {
     this.signupHeadertext = `css=div[class='signup-form'] h2`;
+    this.loginHeadertext = `css=div[class='login-form'] h2`;
     this.nameInputText = `css=input[placeholder='Name']`;
     this.emailInputText = `css=input[data-qa='signup-email']`;
     this.signupButton = `css=button[data-qa='signup-button']`;
@@ -89,6 +96,12 @@ export class RegisterPage {
 
     this.deleteAccMessage = `css=h2[class='title text-center'] b`;
     this.deleteAccContinueButton = `css=.btn.btn-primary`;
+
+    this.loginEmailtext = `css=input[data-qa='login-email']`;
+    this.loginPasswordtext = `css=input[data-qa="login-password"]`;
+    this.loginButton = `css=button[data-qa='login-button']`;
+
+    this.incorrectEmailText = `xpath=//p[normalize-space()='Your email or password is incorrect!']`;
 
   }
 }
