@@ -19,7 +19,7 @@ class UserRegister extends ExpectedTextProvider {
                 await runner.verifyElementIsVisible(registerPage.signupHeadertext)
                 await runner.verifyContainText(registerPage.signupHeadertext,'New User Signup!')
                 await runner.typeInputBox(registerPage.nameInputText, "provat")
-                await runner.typeInputBox(registerPage.emailInputText, "provat.raihan002@gmail.com")
+                await runner.typeInputBox(registerPage.emailInputText, "provat.raihan015@gmail.com")
                 await runner.clickOnElement(registerPage.signupButton)
 
 
@@ -27,7 +27,7 @@ class UserRegister extends ExpectedTextProvider {
                 await runner.verifyElementIsVisible(registerPage.userTitleRadioButton)
                 await runner.clickOnElement(registerPage.userTitleRadioButton)
                 await runner.verifyToHaveValue(registerPage.userNameInputField,'provat')
-                await runner.verifyToHaveValue(registerPage.userEmailInputfield,'provat.raihan002@gmail.com')
+                await runner.verifyToHaveValue(registerPage.userEmailInputfield,'provat.raihan015@gmail.com')
                 await runner.fillInputBox(registerPage.userPasswordInputField,'f u btch')
                 await runner.selectDropdownByValue(registerPage.dobDayButton,'25')
                 await runner.selectDropdownByValue(registerPage.dobMonthButton,'6')
@@ -55,10 +55,17 @@ class UserRegister extends ExpectedTextProvider {
                 
                 await runner.clickOnElement(registerPage.continueButton)
 
+                
+
+                await runner.verifyElementIsVisible(registerPage.loggedInShow)
+
+                await runner.verifyContainText(registerPage.loggedInShow,'Logged in as provat')
+
                 await runner.clickOnElement(registerPage.deleteAccButton)
 
                 await runner.verifyElementIsVisible(registerPage.deleteAccMessage)
                 await runner.verifyContainText(registerPage.deleteAccMessage,'Account Deleted!')
+                await runner.verifyElementIsVisible(registerPage.deleteAccContinueButton)
                 await runner.clickOnElement(registerPage.deleteAccContinueButton)
 
 

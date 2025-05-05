@@ -88,7 +88,7 @@ export class RegisterPage {
     this.deleteAccButton = `css=a[href='/delete_account']`;
 
     this.deleteAccMessage = `css=h2[class='title text-center'] b`;
-    this.deleteAccContinueButton = `css=a[class="btn btn-primary"]`;
+    this.deleteAccContinueButton = `css=.btn.btn-primary`;
 
   }
 }
