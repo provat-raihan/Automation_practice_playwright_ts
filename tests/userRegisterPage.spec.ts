@@ -11,7 +11,7 @@ class UserRegister extends ExpectedTextProvider {
   
     runTests() {
         test.describe('Validating Register User Page Test', () => {
-            test.skip('Validating Register User(test 1)', async ({ runner,homePage, registerPage }) => {
+            test('Validating Register User(test 1)', async ({ runner,homePage, registerPage }) => {
                 await  runner.navigateTo(homePageData.homePageUrl)
                 await  runner.verifyContainsUrl(homePageData.homePageUrl)
                 await  runner.verifyElementIsVisible(homePage.homePageLogo)
@@ -71,7 +71,7 @@ class UserRegister extends ExpectedTextProvider {
 
                 
             })
-            test.skip('Validating Login User with correct email and password test 2', async ({ runner,homePage, registerPage }) => {
+            test('Validating Login User with correct email and password test 2', async ({ runner,homePage, registerPage }) => {
                 await  runner.navigateTo(homePageData.homePageUrl)
                 await  runner.verifyContainsUrl(homePageData.homePageUrl)
                 await  runner.verifyElementIsVisible(homePage.homePageLogo)
@@ -112,6 +112,38 @@ class UserRegister extends ExpectedTextProvider {
                 await runner.verifyContainText(registerPage.incorrectEmailText,'Your email or password is incorrect!')
 
 
+            })
+            test('Validating Logout User test 4', async ({ runner,homePage, registerPage }) => {
+                await  runner.navigateTo(homePageData.homePageUrl)
+                await  runner.verifyContainsUrl(homePageData.homePageUrl)
+                await  runner.verifyElementIsVisible(homePage.homePageLogo)
+                await runner.clickOnElement(homePage.signupButton)
+                await runner.verifyElementIsVisible(registerPage.loginHeadertext)
+
+
+                await runner.fillInputBox(registerPage.loginEmailtext,'provat.raihan04@gmail.com')
+                await runner.fillInputBox(registerPage.loginPasswordtext,'f u btch')
+                await runner.clickOnElement(registerPage.loginButton)
+
+                await runner.verifyElementIsVisible(registerPage.loggedInShow)
+                await runner.verifyContainText(registerPage.loggedInShow,'Logged in as provat')
+
+                await runner.clickOnElement(registerPage.logoutButton)
+                await  runner.verifyContainsUrl(homePageData.registerPageUrl)
+            })
+            test('Validating Register User with existing email test 5', async ({ runner,homePage, registerPage }) => {
+                await  runner.navigateTo(homePageData.homePageUrl)
+                await  runner.verifyContainsUrl(homePageData.homePageUrl)
+                await  runner.verifyElementIsVisible(homePage.homePageLogo)
+                await runner.clickOnElement(homePage.signupButton)
+                await runner.verifyElementIsVisible(registerPage.signupHeadertext)
+                await runner.verifyContainText(registerPage.signupHeadertext,'New User Signup!')
+                await runner.typeInputBox(registerPage.nameInputText, "provat")
+                await runner.typeInputBox(registerPage.emailInputText, "provat.raihan04@gmail.com")
+                await runner.clickOnElement(registerPage.signupButton)
+
+                await runner.verifyElementIsVisible(registerPage.emailAlreadyExistText)
+                await runner.verifyContainText(registerPage.emailAlreadyExistText,'Email Address already exist!')
             })
             
         })

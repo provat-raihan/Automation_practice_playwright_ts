@@ -43,12 +43,16 @@ export class RegisterPage {
 
   readonly loggedInShow: string;
 
+  readonly logoutButton: string;
+
   readonly deleteAccButton: string;
 
   readonly deleteAccMessage: string;
   readonly deleteAccContinueButton: string;
 
   readonly incorrectEmailText: string;
+
+  readonly emailAlreadyExistText: string;
 
 
 
@@ -92,6 +96,8 @@ export class RegisterPage {
 
     this.loggedInShow = `css=li:nth-child(10) a:nth-child(1)`;
 
+    this.logoutButton = `css=a[href='/logout']`;
+
     this.deleteAccButton = `css=a[href='/delete_account']`;
 
     this.deleteAccMessage = `css=h2[class='title text-center'] b`;
@@ -102,6 +108,8 @@ export class RegisterPage {
     this.loginButton = `css=button[data-qa='login-button']`;
 
     this.incorrectEmailText = `xpath=//p[normalize-space()='Your email or password is incorrect!']`;
+
+    this.emailAlreadyExistText = `xpath=//p[normalize-space()='Email Address already exist!']`;
 
   }
 }
