@@ -113,7 +113,7 @@ class UserRegister extends ExpectedTextProvider {
 
 
             })
-            test('Validating Logout User test 4', async ({ runner,homePage, registerPage }) => {
+            test('Validating Logout User test 4', async ({ page,runner,homePage, registerPage }) => {
                 await  runner.navigateTo(homePageData.homePageUrl)
                 await  runner.verifyContainsUrl(homePageData.homePageUrl)
                 await  runner.verifyElementIsVisible(homePage.homePageLogo)
@@ -127,8 +127,10 @@ class UserRegister extends ExpectedTextProvider {
 
                 await runner.verifyElementIsVisible(registerPage.loggedInShow)
                 await runner.verifyContainText(registerPage.loggedInShow,'Logged in as provat')
-
+                // await page.pause()
+                await runner.verifyElementIsVisible(registerPage.logoutButton)
                 await runner.clickOnElement(registerPage.logoutButton)
+                // await page.pause()
                 await  runner.verifyContainsUrl(homePageData.registerPageUrl)
             })
             test('Validating Register User with existing email test 5', async ({ runner,homePage, registerPage }) => {
@@ -152,5 +154,5 @@ class UserRegister extends ExpectedTextProvider {
   }
   const testSuite = new UserRegister();
   testSuite.runTests();
-  
+
 

@@ -2,13 +2,18 @@ import { test as base, Page } from "@playwright/test";
 import { HomePage } from "../pageObjectModel/homePage";
 import { Utils } from "./utils";
 import { RegisterPage } from "../pageObjectModel/registerPage";
-// import { AccountPage } from "../pom/accountPage";
+import { ContactUsPage } from "../pageObjectModel/contactUsPage";
+import { ProductPage } from "../pageObjectModel/productPage";
+import { CartPage } from "../pageObjectModel/cartPage";
 
 const test = base.extend<{
   runner: Utils;
   homePage: HomePage;
   registerPage: RegisterPage;
-  // accountPage: AccountPage;
+  contactUsPage: ContactUsPage;
+  productPage: ProductPage;
+  cartPage : CartPage;
+  
 }>({
   runner: async ({ page }: { page: Page }, use) => {
     const utilsInstance = new Utils(page);
@@ -23,10 +28,18 @@ const test = base.extend<{
     await use(registerPageInstance);
   },
 
-  // accountPage: async ({ page }: { page: Page }, use) => {
-  //   const accountPageInstance = new AccountPage(page);
-  //   await use(accountPageInstance);
-  // },
+  contactUsPage: async ({ page }: { page: Page }, use) => {
+    const contactUsPageInstance = new ContactUsPage(page);
+    await use(contactUsPageInstance);
+  },
+  productPage: async ({ page }: { page: Page }, use) => {
+    const productPageInstance = new ProductPage(page);
+    await use(productPageInstance);
+  },
+  cartPage: async ({ page }: { page: Page }, use) => {
+    const cartPageInstance = new CartPage(page);
+    await use(cartPageInstance);
+  },
 });
 
 export { test };

@@ -368,4 +368,77 @@ export class Utils {
   }
 
 
+  async uploadFile(identifier: string, filePath: string): Promise<void> {
+    try {
+      await this.page.setInputFiles(identifier, filePath);
+      this.logMessage(`Uploaded file from path: ${filePath} to ${identifier}`);
+    } catch (error) {
+      const errorMsg = `Failed to upload file to ${identifier}`;
+      this.logMessage(errorMsg, "error");
+      await this.captureScreenshotOnFailure("uploadFile");
+      throw new Error(errorMsg);
+    }
+  }
+
+  async handleAlertAndAccept(): Promise<void> {
+    this.page.once("dialog", async (dialog) => {
+      console.log("Alert message:", dialog.message());
+      await dialog.accept();
+      this.logMessage("Alert accepted");
+    });
+  }
+  
+
+  async scrollToFooter(): Promise<void> {
+    try {
+      await this.page.evaluate(() => {
+        const footer = document.querySelector("footer");
+        if (footer) {
+          footer.scrollIntoView({ behavior: "smooth", block: "end" });
+        } else {
+          throw new Error("Footer element not found");
+        }
+      });
+      this.logMessage("Scrolled to footer successfully.");
+    } catch (error) {
+      const errorMsg = "Failed to scroll to footer.";
+      this.logMessage(errorMsg, "error");
+      await this.captureScreenshotOnFailure("scrollToFooter");
+      throw new Error(errorMsg);
+    }
+  }
+  
+  async handleAlertWithMessage(expectedMessage: string): Promise<void> {
+    try {
+      this.page.once("dialog", async (dialog) => {
+        const message = dialog.message();
+        expect(message).toBe(expectedMessage);
+        await dialog.accept();
+        this.logMessage(`Alert with message "${message}" accepted.`);
+      });
+    } catch (error) {
+      const errorMsg = `Failed to handle alert with expected message: "${expectedMessage}"`;
+      this.logMessage(errorMsg, "error");
+      await this.captureScreenshotOnFailure("handleAlertWithMessage");
+      throw new Error(errorMsg);
+    }
+  }
+  
+
+  async hoverAndClick(hoverTarget: string, clickTarget: string): Promise<void> {
+    try {
+      await this.page.locator(hoverTarget).hover();
+      this.logMessage(`Hovered on element: ${hoverTarget}`);
+      
+      await this.page.locator(clickTarget).click();
+      this.logMessage(`Clicked on element after hover: ${clickTarget}`);
+    } catch (error) {
+      const errorMsg = `Failed to hover on ${hoverTarget} and click ${clickTarget}`;
+      this.logMessage(errorMsg, "error");
+      await this.captureScreenshotOnFailure("hoverAndClick");
+      throw new Error(errorMsg);
+    }
+  }
+  
+
 } // This is the class curly braces
