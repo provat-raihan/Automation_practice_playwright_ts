@@ -61,9 +61,11 @@ class CartPage extends ExpectedTextProvider {
 
         })
             
+
         })
         
     }
   }
   const testSuite = new CartPage();
   testSuite.runTests();
+//   ver
