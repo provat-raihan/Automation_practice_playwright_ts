@@ -1,0 +1,10 @@
+{
+    "homePageUrl": "https://automationexercise.com/",
+    "registerPageUrl": "https://automationexercise.com/login",
+    "contactUsPageUrl": "https://automationexercise.com/contact_us",
+    "testCasePageUrl": "https://automationexercise.com/test_cases",
+    "productsPageUrl": "https://automationexercise.com/products",
+    "product1stDetailsPageUrl": "https://automationexercise.com/product_details/1",
+    "viewCartPageUrl": "https://automationexercise.com/view_cart"
+
+}

@@ -1,0 +1,25 @@
+{
+  "name": "automation_practice_playwright_ts",
+  "version": "1.0.0",
+  "description": "yes",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/provat-raihan/Automation_practice_playwright_ts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/provat-raihan/Automation_practice_playwright_ts/issues"
+  },
+  "homepage": "https://github.com/provat-raihan/Automation_practice_playwright_ts#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.15.3"
+  },
+  "dependencies": {
+    "winston": "^3.17.0"
+  }
+}
